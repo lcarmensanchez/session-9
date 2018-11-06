@@ -18,16 +18,18 @@
     }
   </style>
   <script>
+  function carteDeReduction(monAge) {
+    if (monAge >= 12 && monAge <= 27)
+      return "Vous avez le droit à la carte jeune."
+    else if (monAge >= 60)
+      return "Vous avez le droit à la carte senior."
+    else
+      return "Vous n'avez le droit à aucune réduction."
+  }
   var monAge= prompt('Quel est votre âge ?');
-  if (monAge >= 12 && monAge <= 27)
-    alert("Vous avez le droit à la carte jeune.")
-  else if (monAge >= 60)
-    alert("Vous avez le droit à la carte senior.")
-  else
-    alert("Vous n'avez le droit à aucune réduction.")
-
+  alert(carteDeReduction(monAge))
   </script>
-  
+
 </head>
 
 <body>
@@ -57,8 +59,6 @@
           <p class="lead mt-2" v-if="success === false">Raté ! <span v-if="!step.choices">La réponse était {{ step.answer }}</span></p>
           <button class="btn btn-dark btn-lg btn-block" v-if="success !== null" v-on:click="nextQuestion">Prochaine question</button>
         </div>
-
-        <!-- Carte lorsque toutes les questions ont été complétées -->
         <div class="card-body" v-if="current == quiz.length">
           <h4 class="card-title">Vous avez terminé !</h4>
           <p class="card-text">Votre score est de {{ score }} réponse<span v-if="score>1">s</span>correcte<span v-if="score>1">s</span> </p>
